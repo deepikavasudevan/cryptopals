@@ -1,7 +1,7 @@
 from commons import pkcs_padding
 
 BLOCK_LENGTH = 20
-UNPADDED_TEXT = "YELLOW SUBMARINE"
+UNPADDED_TEXT = b"YELLOW SUBMARINE"
 
 
 def main():

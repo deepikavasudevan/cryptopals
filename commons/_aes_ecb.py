@@ -1,6 +1,6 @@
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
-
+from ._pkcs_padding import pkcs_padding
 
 class AES_ECB:
     def __init__(self, key):
@@ -13,7 +13,7 @@ class AES_ECB:
 
     def encrypt(self, plaintext):
         encryptor = self._cipher.encryptor()
-        ciphertext = encryptor.update(plaintext) + encryptor.finalize()
+        ciphertext = encryptor.update(pkcs_padding(plaintext, 16)) + encryptor.finalize()
         return ciphertext
 
 
